@@ -1,0 +1,3 @@
+<span class="cart-count" *ngIf="(cartService.getCart() | async)?.length as count">
+  {{ count }}
+</span>

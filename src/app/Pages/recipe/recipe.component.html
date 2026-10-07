@@ -1,0 +1,47 @@
+<div class="container">
+  <section class="recipe-section" *ngFor="let recipe of recipes">
+    <div class="recipe-card">
+      <div class="recipe-image">
+        <img [src]="recipe.image" [alt]="recipe.name">
+      </div>
+
+      <div class="recipe-content">
+        <h2 class="recipe-name">
+          {{ recipe.name }}
+        </h2>
+
+        <div class="recipe-ingredients">
+          <h3>Ingredients:</h3>
+
+          <ul>
+            <li *ngFor="let ingredient of recipe.ingredients">
+              {{ ingredient }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="recipe-instructions">
+          <h3>Instructions:</h3>
+
+          <ol>
+            <li *ngFor="let instruction of recipe.instructions">
+              {{ instruction }}
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="recipe-actions">
+        <button class="edit-button" (click)="onEdit(recipe)">Edit</button>
+
+        <div class="quantity-control" aria-label="Quantity">
+          <button type="button" aria-label="Decrease quantity" (click)="decreaseQuantity(recipe)">-</button>
+          <span>{{ getQuantity(recipe) }}</span>
+          <button type="button" aria-label="Increase quantity" (click)="increaseQuantity(recipe)">+</button>
+        </div>
+
+        <button class="add-to-cart-button" (click)="onAddToCart(recipe)">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="cart-empty" *ngIf="!isLoading && !items.length">
+    Your cart is empty.
+  </div>
+
+  <section class="cart-section" *ngFor="let item of items">
+    <div class="cart-card">
+      <div class="cart-image">
+        <img [src]="item.recipeImage" [alt]="item.recipeName" />
+      </div>
+
+      <div class="cart-content">
+        <h2 class="cart-name">{{ item.recipeName }}</h2>
+
+        <div class="cart-ingredients">
+          <h3>Ingredients:</h3>
+          <ul>
+            <li *ngFor="let ingredient of item.ingredients.split('\n')">
+              {{ ingredient }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cart-quantity">
+        <button (click)="decrease(item)">−</button>
+        <span>{{ item.quantity }}</span>
+        <button (click)="increase(item)">+</button>
+      </div>
+
+      <button class="remove-button" (click)="remove(item)">Remove</button>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,114 @@
+<!-- <div class="login-page">
+  <form class="login-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <h3>Create Account</h3>
+
+    <div class="form-field">
+      <label>Name <span class="required">*</span></label>
+      <input type="text" formControlName="name" placeholder="Enter your name">
+      <div class="error" *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>Surname <span class="required">*</span></label>
+      <input type="text" formControlName="surname" placeholder="Enter your surname">
+      <div class="error" *ngIf="registerForm.get('surname')?.touched && registerForm.get('surname')?.invalid">
+        Surname is required
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>Email <span class="required">*</span></label>
+      <input type="email" formControlName="email" placeholder="Enter your email">
+      <div class="error" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+        Enter a valid email
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>Password <span class="required">*</span></label>
+      <input type="password" formControlName="password" placeholder="Enter password">
+      <div class="error" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+        Password must be at least 6 characters
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn-clear" (click)="registerForm.reset()">Clear</button>
+      <button type="submit" class="btn-submit" [disabled]="registerForm.invalid">
+        Register
+      </button>
+    </div>
+
+    <div class="signup-cta">
+      <span>Already have an account?</span>
+      <a routerLink="/login" class="signup-link">Login</a>
+    </div>
+
+  </form>
+</div> -->
+
+<div class="login-page">
+  <form class="login-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <h3>Create Account</h3>
+
+    <div class="auth-error" *ngIf="authError">
+      {{ authError }}
+    </div>
+
+    <div class="form-field">
+      <label>Name <span class="required">*</span></label>
+      <input type="text" formControlName="name" placeholder="Enter your name">
+
+      <div class="error" *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>Surname <span class="required">*</span></label>
+      <input type="text" formControlName="surname" placeholder="Enter your surname">
+
+      <div class="error" *ngIf="registerForm.get('surname')?.touched && registerForm.get('surname')?.invalid">
+        Surname is required
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>Email <span class="required">*</span></label>
+      <input type="email" formControlName="email" placeholder="Enter your email">
+
+      <div class="error" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+        Enter a valid email
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>Password <span class="required">*</span></label>
+      <input type="password" formControlName="password" placeholder="Enter password">
+
+      <div class="error" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+        Password must be at least 6 characters
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn-clear" (click)="onClear()" [disabled]="loading">
+        Clear
+      </button>
+
+      <button type="submit" class="btn-submit" [disabled]="loading || registerForm.invalid">
+        {{ loading ? 'Loading...' : 'Register' }}
+      </button>
+    </div>
+
+    <div class="signup-cta">
+      <span>Already have an account?</span>
+      <a routerLink="/login" class="signup-link">Login</a>
+    </div>
+
+  </form>
+</div>
