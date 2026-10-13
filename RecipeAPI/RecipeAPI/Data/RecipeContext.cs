@@ -20,6 +20,8 @@ namespace RecipeAPI.Data
                 recipe.Property(r => r.RecipeImage).HasColumnType("varchar(255)").IsRequired(false);
                 recipe.Property(r => r.Ingredients).HasColumnType("varchar(255)").IsRequired(false);
                 recipe.Property(r => r.Instructions).HasColumnType("varchar(255)").IsRequired(false);
+
+                recipe.HasData(RecipeSeedData.Recipes);
             });
 
             modelBuilder.Entity<Cart>(cart =>

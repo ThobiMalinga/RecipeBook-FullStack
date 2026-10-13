@@ -36,7 +36,7 @@ cd RecipeAPI/RecipeAPI
 dotnet dotnet-ef database update
 ```
 
-`dotnet tool restore` installs the EF Core CLI at the version pinned in `dotnet-tools.json`, so nothing needs installing globally. If the database doesn't exist yet, `database update` creates it.
+`dotnet tool restore` installs the EF Core CLI at the version pinned in `dotnet-tools.json`, so nothing needs installing globally. If the database doesn't exist yet, `database update` creates it, and it adds 6 starter recipes so the app isn't empty (see `RecipeAPI/RecipeAPI/Data/RecipeSeedData.cs`).
 
 If you change the models later, add a new migration with `dotnet dotnet-ef migrations add <Name>`, then run `database update` again.
 
