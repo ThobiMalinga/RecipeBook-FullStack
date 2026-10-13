@@ -1,0 +1,133 @@
+<!-- <div class="page">
+  <form class="add-recipe-form" (ngSubmit)="submit()">
+
+    <div class="form-field">
+      <label for="name">Name</label>
+      <input
+        id="name"
+        type="text"
+        [(ngModel)]="model.name"
+        name="name" />
+
+      <div *ngIf="submitted && !model.name.trim()" class="error">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="ingredients">Ingredients (one per line)</label>
+      <textarea
+        id="ingredients"
+        [(ngModel)]="ingredientsText"
+        name="ingredients">
+      </textarea>
+
+      <div *ngIf="submitted && ingredientsEmpty" class="error">
+        Ingredients are required.
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="instructions">Instructions (one step per line)</label>
+      <textarea
+        id="instructions"
+        [(ngModel)]="instructionsText"
+        name="instructions">
+      </textarea>
+
+      <div *ngIf="submitted && instructionsEmpty" class="error">
+        Instructions are required.
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="image">Image URL (optional)</label>
+      <input
+        id="image"
+        type="url"
+        [(ngModel)]="model.image"
+        name="image" />
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn-clear" (click)="clear()">Clear</button>
+      <button type="submit" class="btn-submit">Submit</button>
+    </div>
+
+  </form>
+</div> -->
+
+<div class="page">
+  <form class="add-recipe-form" (ngSubmit)="submit()">
+
+    <h3>Add Recipe</h3>
+
+    <div class="form-field">
+      <label for="name">
+        Name <span class="required">*</span>
+      </label>
+
+      <input
+        id="name"
+        type="text"
+        [(ngModel)]="model.name"
+        name="name"
+        placeholder="Enter recipe name" />
+
+      <div *ngIf="submitted && !model.name.trim()" class="error">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="ingredients">
+        Ingredients <span class="required">*</span>
+      </label>
+
+      <textarea
+        id="ingredients"
+        [(ngModel)]="ingredientsText"
+        name="ingredients"
+        placeholder="Enter one ingredient per line">
+      </textarea>
+
+      <div *ngIf="submitted && ingredientsEmpty" class="error">
+        Ingredients are required.
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="instructions">
+        Instructions <span class="required">*</span>
+      </label>
+
+      <textarea
+        id="instructions"
+        [(ngModel)]="instructionsText"
+        name="instructions"
+        placeholder="Enter one step per line">
+      </textarea>
+
+      <div *ngIf="submitted && instructionsEmpty" class="error">
+        Instructions are required.
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="image">Image URL</label>
+
+      <input
+        id="image"
+        type="url"
+        [(ngModel)]="model.image"
+        name="image"
+        placeholder="https://example.com/image.jpg" />
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn-clear" (click)="clear()">Clear</button>
+      <button type="submit" class="btn-submit">Submit</button>
+    </div>
+
+  </form>
+</div>

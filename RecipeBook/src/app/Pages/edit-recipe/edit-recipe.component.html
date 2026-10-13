@@ -1,0 +1,67 @@
+
+<div class="page-center">
+  <div class="edit-card">
+    <div class="edit-header">
+      <h1>Edit Recipe</h1>
+      <div class="actions">
+        <button class="btn ghost" type="button" (click)="cancel()">Back</button>
+        <button class="btn primary" type="button" (click)="save()" [disabled]="saving || form.invalid">
+          {{ saving ? 'Saving…' : 'Save Changes' }}
+        </button>
+      </div>
+    </div>
+
+    <section *ngIf="viewMode" class="details">
+      <div class="image-row" *ngIf="form.value.image; else noImg">
+        <img [src]="form.value.image" alt="Recipe image" />
+      </div>
+      <ng-template #noImg>
+        <div class="image-placeholder">No image provided</div>
+      </ng-template>
+
+      <div class="details-grid">
+        <div>
+          <h3>Ingredients</h3>
+          <pre class="block pre">{{ form.value.ingredientsText || '—' }}</pre>
+        </div>
+        <div>
+          <h3>Instructions</h3>
+          <pre class="block pre">{{ form.value.instructionsText || '—' }}</pre>
+        </div>
+      </div>
+
+      <div class="footer-actions">
+        <button class="btn primary" type="button" (click)="toggleMode()">Edit</button>
+      </div>
+    </section>
+
+    <form *ngIf="!viewMode" [formGroup]="form" (ngSubmit)="save()" class="form">
+      <div class="field">
+        <label for="name">Recipe Name <span>*</span></label>
+        <input id="name" type="text" formControlName="name" />
+      </div>
+
+      <div class="field">
+        <label for="image">Image URL</label>
+        <input id="image" type="url" formControlName="image" />
+      </div>
+
+      <div class="field">
+        <label for="ingredientsText">Ingredients (one per line)</label>
+        <textarea id="ingredientsText" formControlName="ingredientsText" rows="12"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="instructionsText">Instructions (one per line)</label>
+        <textarea id="instructionsText" formControlName="instructionsText" rows="14"></textarea>
+      </div>
+
+      <div class="footer-actions">
+        <button class="btn ghost" type="button" (click)="cancel()" [disabled]="saving">Cancel</button>
+        <button class="btn primary" type="submit" [disabled]="saving || form.invalid">
+          {{ saving ? 'Saving…' : 'Save Changes' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
