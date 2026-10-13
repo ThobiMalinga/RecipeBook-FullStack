@@ -28,14 +28,17 @@ cd RecipeBook-FullStack
 
 The connection string is in `RecipeAPI/RecipeAPI/appsettings.json` under `ConnectionStrings:DefaultConnection`. It currently points to a local SQL Server Express instance, so change the `Data Source` to your own server.
 
-The project doesn't include Entity Framework migrations yet. To create the `Recipes` and `Carts` tables from the models:
+Then create the database and the `Recipes` and `Carts` tables by applying the Entity Framework migrations:
 
 ```bash
-dotnet tool install --global dotnet-ef
+dotnet tool restore
 cd RecipeAPI/RecipeAPI
-dotnet ef migrations add InitialCreate
-dotnet ef database update
+dotnet dotnet-ef database update
 ```
+
+`dotnet tool restore` installs the EF Core CLI at the version pinned in `dotnet-tools.json`, so nothing needs installing globally. If the database doesn't exist yet, `database update` creates it.
+
+If you change the models later, add a new migration with `dotnet dotnet-ef migrations add <Name>`, then run `database update` again.
 
 ### 2. Run the API
 
