@@ -83,6 +83,32 @@ namespace RecipeAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchRecipe(int id, UpdateRecipe patch)
+        {
+            try
+            {
+                var existing = await _recipeRepository.GetRecipeById(id);
+                if (existing == null)
+                    return NotFound();
+
+                if (patch.RecipeName != null)
+                    existing.RecipeName = patch.RecipeName;
+                if (patch.RecipeImage != null)
+                    existing.RecipeImage = patch.RecipeImage;
+                if (patch.Ingredients != null)
+                    existing.Ingredients = patch.Ingredients;
+                if (patch.Instructions != null)
+                    existing.Instructions = patch.Instructions;
+
+                await _recipeRepository.UpdateRecipe(existing);
+                return Ok(existing);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRecipe(int id)

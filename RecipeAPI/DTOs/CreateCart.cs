@@ -4,9 +4,6 @@ namespace RecipeAPI.DTOs
 {
     public class CreateCart
     {
-        //public required string ItemName { get; set; }
-        //public int RecipeId { get; set; }
-        //public int Quantity { get; set; }
 
         public int Id { get; set; } 
         public string itemName { get; set; }

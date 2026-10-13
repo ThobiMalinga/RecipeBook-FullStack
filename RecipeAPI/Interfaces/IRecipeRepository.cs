@@ -3,7 +3,7 @@
 namespace RecipeAPI.Interfaces
 {
     public interface IRecipeRepository
-    {
+    { //Add comments explaining each method in the interface
         Task CreateRecipe(Recipe recipe);
 
         Task<List<Recipe>> GetRecipes();
